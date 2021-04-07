@@ -1,0 +1,28 @@
+{
+	"name": "template",
+	"version": "0.1.0",
+	"description": "Web Sketch Template",
+	"main": "index.js",
+	"author": "Edu Prats <hello@eduprats.com>",
+	"license": {
+		"type": "Apache-2.0",
+		"url": "https://opensource.org/licenses/apache2.0.php"
+	},
+	"private": true,
+	"scripts": {
+		"prepare": "yarn upgrade --latest",
+		"dev": "eleventy --serve --watch"
+	},
+	"dependencies": {
+		"@jocabola/gfx": "^0.2.91",
+		"@jocabola/math": "^0.1.9",
+		"@jocabola/phy": "^0.1.6",
+		"@jocabola/utils": "^0.1.4",
+		"three": "^0.127.0"
+	},
+	"devDependencies": {
+		"@11ty/eleventy": "^0.12.1",
+		"chokidar": "^3.5.1",
+		"esbuild": "^0.11.6"
+	}
+}
