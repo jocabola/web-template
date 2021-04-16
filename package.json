@@ -11,7 +11,8 @@
 	"private": true,
 	"scripts": {
 		"prepare": "yarn upgrade --latest",
-		"dev": "eleventy --serve --watch"
+		"dev": "eleventy --serve --watch",
+		"build": "ELEVENTY_ENV=production eleventy"
 	},
 	"dependencies": {
 		"@jocabola/gfx": "^0.2.91",
