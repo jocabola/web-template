@@ -15,15 +15,15 @@
 		"build": "ELEVENTY_ENV=production eleventy"
 	},
 	"dependencies": {
-		"@jocabola/gfx": "^0.2.91",
-		"@jocabola/math": "^0.1.9",
+		"@jocabola/gfx": "^0.3.69",
+		"@jocabola/math": "^0.1.91",
 		"@jocabola/phy": "^0.1.6",
 		"@jocabola/utils": "^0.1.4",
-		"three": "^0.127.0"
+		"three": "^0.128.0"
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^0.12.1",
 		"chokidar": "^3.5.1",
-		"esbuild": "^0.11.6"
+		"esbuild": "^0.11.18"
 	}
 }
