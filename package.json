@@ -10,12 +10,12 @@
 	},
 	"private": true,
 	"scripts": {
-		"prepare": "yarn upgrade --latest",
 		"dev": "eleventy --serve --watch",
 		"build": "ELEVENTY_ENV=production eleventy"
 	},
 	"dependencies": {
 		"@jocabola/gfx": "^0.3.69",
+		"@jocabola/io": "^0.1.91",
 		"@jocabola/math": "^0.1.91",
 		"@jocabola/phy": "^0.1.6",
 		"@jocabola/utils": "^0.1.4",
