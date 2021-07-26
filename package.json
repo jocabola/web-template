@@ -12,16 +12,16 @@
 	},
 	"dependencies": {
 		"@jocabola/gfx": "^0.3.75",
-		"@jocabola/io": "^0.1.91",
-		"@jocabola/math": "^0.2.1",
-		"@jocabola/phy": "^0.1.71",
+		"@jocabola/io": "^0.2.4",
+		"@jocabola/math": "^0.2.3",
+		"@jocabola/phy": "^0.1.73",
 		"@jocabola/utils": "^0.1.6",
-		"three": "^0.129.0"
+		"three": "^0.130.1"
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^0.12.1",
-		"chokidar": "^3.5.1",
-		"esbuild": "^0.12.5"
+		"chokidar": "^3.5.2",
+		"esbuild": "^0.12.16"
 	},
 	"resolutions": {
 		"three": "^0.129.0"
