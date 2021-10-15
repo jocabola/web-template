@@ -1,6 +1,6 @@
 import { WebGLSketch } from '@jocabola/gfx';
 
-export default class App extends WebGLSketch {
+export class App extends WebGLSketch {
 	constructor() {
 		super(window.innerWidth, window.innerHeight, {
 			alpha: false,

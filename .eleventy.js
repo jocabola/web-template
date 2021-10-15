@@ -1,10 +1,11 @@
 const esbuild = require('esbuild');
 const chokidar = require('chokidar');
 const isProduction = process.env.ELEVENTY_ENV === 'production';
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 const buildJS = () => {
 	esbuild.buildSync({
-		entryPoints: ['src/main.js'],
+		entryPoints: ['src/js/main.js'],
 		bundle: true,
 		minify: isProduction,
 		sourcemap: false,
@@ -24,11 +25,30 @@ if(!isProduction) {
 buildJS();
 
 module.exports = function (eleventyConfig) {
+	eleventyConfig.addPlugin(syntaxHighlight);
+
 	eleventyConfig.setUseGitIgnore(false);
 	// browser sync options
 	eleventyConfig.setBrowserSyncConfig({
 		ghostMode: false,
 	});
 	eleventyConfig.setWatchJavaScriptDependencies(false);
+	eleventyConfig.addPassthroughCopy({"src/assets": "assets"});
 	eleventyConfig.addPassthroughCopy("bundle");
+
+	/* eleventyConfig.addFilter("cssmin", function(code) {
+		return new CleanCSS({}).minify(code).styles;
+	}); */
+
+	return {
+		dir: {
+			data: '../data',
+			input: 'src/site/pages',
+			includes: '../partials',
+			layouts: '../base',
+			output: 'public'
+		},
+		templateFormats: ['html', 'njk', 'md'],
+		htmlTemplateEngine: 'njk',
+	}
 }
