@@ -72,6 +72,20 @@ module.exports = function (eleventyConfig) {
 		return new CleanCSS({}).minify(code).styles;
 	}); */
 
+	eleventyConfig.addShortcode('imageUrlFor', (image, width = '400') => {
+		return urlFor(image).width(width).auto('format').url();
+	});
+
+	// eleventyConfig.addShortcode('assetUrlFor', (asset) => {
+	// 		if(!!!asset) return 'no-asset';
+	// 		return urlForAsset(asset);
+	// });
+
+	eleventyConfig.addShortcode('blockText', (content) => {
+			return blockText(content);
+	});
+
+
 	return {
 		dir: {
 			data: '../data',
@@ -80,7 +94,7 @@ module.exports = function (eleventyConfig) {
 			layouts: '../base',
 			output: 'public'
 		},
-		templateFormats: ['html', 'njk', 'md'],
+		templateFormats: ['html', 'njk'],
 		htmlTemplateEngine: 'njk',
 	}
 }
