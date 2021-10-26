@@ -1,6 +1,34 @@
-		canvas {
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform: translate(-50%, -50%);
-		}
+$comingSoonIndex: 11;
+$footerIndex: 10;
+$headerIndex: 10;
+
+// Partials
+@import './partials/resets';
+@import './partials/vars';
+@import './partials/mixins';
+@import './partials/fonts';
+
+// Components
+@import './components/header';
+@import './components/footer';
+
+
+* {
+	color: map-get($colors, 'black' );
+}
+
+body {
+	overscroll-behavior: none;
+}
+
+.site__wrapper {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	overflow: hidden;
+}
+
+// @include pointerFine {
+
+// }
+

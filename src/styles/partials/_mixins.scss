@@ -1,0 +1,58 @@
+/* mixins.scss */
+
+// ------------------------------ Breakpoints
+
+@mixin device {
+  @media only screen and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media only screen and (min-width: 321px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media only screen and (min-width: 769px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media only screen and (min-width: 1025px) {
+    @content;
+  }
+}
+@mixin largeDesktop {
+  @media only screen and (min-width: 1599px) {
+    @content;
+  }
+}
+
+@mixin pointerFine {
+  @media (any-pointer:fine){
+    @content;
+  }
+}
+
+
+/* Bg images aspect ratio */
+/* @include aspect-ratio(4,3); */
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: calc(#{$height} / #{$width} * #{100%});
+  }
+}
+
+// --------------------------------------------- 100vh fallback
+@mixin height($total) {
+  height: calc(#{$total} * 1vh);
+  height: calc(var(--vh, 1vh) * #{$total});
+}
+@mixin min-height($total) {
+  min-height: calc(#{$total} * 1vh);
+  min-height: calc(var(--vh, 1vh) * #{$total});
+}

@@ -11,6 +11,11 @@ const CleanCSS = require('clean-css');
 
 const OUT_CSS = 'bundle/main.css'
 
+// Sanity shortcodes
+const urlFor = require('./utils/imageUrl');
+const urlForAsset = require('./utils/urlForAsset');
+const blockText = require('./utils/blockText');
+
 const buildJS = () => {
 	esbuild.buildSync({
 		entryPoints: ['src/js/main.js'],
@@ -73,6 +78,7 @@ module.exports = function (eleventyConfig) {
 	}); */
 
 	eleventyConfig.addShortcode('imageUrlFor', (image, width = '400') => {
+		if(!image) return;
 		return urlFor(image).width(width).auto('format').url();
 	});
 

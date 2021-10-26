@@ -1,0 +1,17 @@
+
+// Colors
+$colors: (
+	"white": #FFF,
+	"black": #020202,
+);
+
+// Duration
+$duration: (
+	"fast": 0.5s,
+	"slow": 0.8s,
+);
+
+// Ease
+$ease: (
+	"default": cubic-bezier(0.7,0.15,0,1),
+);

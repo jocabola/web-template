@@ -1,0 +1,24 @@
+// @font-face {
+// 	font-family: 'Lovelace';
+// 	src: url('../../assets/Lovelace.woff') format('woff');
+// 	font-style: normal;
+// 	text-rendering: optimizeLegibility;
+// }
+
+// $Lovelace: 'Lovelace';
+
+// body {
+// 	font-family: $Lovelace;
+// }
+
+// @mixin Lovelace {
+// 	line-height: 1em;
+// 	font-family: $Lovelace;
+// 	font-weight: normal;
+// }
+
+
+// @mixin coming-soon_name {
+// 	@include Lovelace;
+//   font-size: 10vw;
+// }
