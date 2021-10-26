@@ -3,6 +3,14 @@ const chokidar = require('chokidar');
 const isProduction = process.env.ELEVENTY_ENV === 'production';
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
+const fs = require('fs');
+const sass = require('sass');
+const autoprefixer = require('autoprefixer');
+const postcss = require('postcss');
+const CleanCSS = require('clean-css');
+
+const OUT_CSS = 'bundle/main.css'
+
 const buildJS = () => {
 	esbuild.buildSync({
 		entryPoints: ['src/js/main.js'],
@@ -15,14 +23,38 @@ const buildJS = () => {
 	});
 }
 
+const buildCSS = () => {
+	sass.render(
+		{ file: 'src/styles/main.scss' },
+		function (err, result) {
+			const css = result.css.toString();
+			postcss([autoprefixer])
+				.process(css, {
+					from: 'src/styles/main.scss',
+					to: OUT_CSS,
+				})
+				.then((result) => {
+
+					const finalCSS = !isProduction ? result.css : new CleanCSS({}).minify(result.css).styles;
+
+					fs.writeFile(OUT_CSS, finalCSS, (error) => {
+						if (error) console.log(error);
+					});
+				});
+		}
+	);
+}
+
 if(!isProduction) {
 	chokidar.watch('src/').on('change', (eventType, file) => {
 		console.log(`Updated JS [${eventType}]`);
 		buildJS();
+		buildCSS();
 	});
 }
 
 buildJS();
+buildCSS();
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.addPlugin(syntaxHighlight);
