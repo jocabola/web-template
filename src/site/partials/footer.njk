@@ -1,39 +1,4 @@
-{% set featuredImage = settings.seo.seo_image %}
-{% if image %}
-	{% set featuredImage = image.asset %}
-{% endif %}
+<footer class="footer__wrapper">
 
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<title>{{ title or settings.seo.title }}</title>
-	<meta name="Description" content="{{ description or settings.description }}">
-
-	<meta name="robots" content="noindex,nofollow">
-	<meta name="google" content="nositelinkssearchbox">
-	<meta name="google" content="notranslate">
-
-	{# todo posar la url del site real #}
-	<meta property="og:url" content="{{ '/' | url }}">
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="{{ title or settings.seo.title }}">
-	<meta property="og:image" content="{% imageUrlFor featuredImage, 600 %}" />
-	<meta property="og:description" content="{{ description or settings.description }}" />
-	<meta property="og:site_name" content="{{ settings.seo.title }}">
-	<meta property="og:locale" content="en_US">
-
-	{# FAVICON MISSING! #}
-	{# <link rel="apple-touch-icon" sizes="180x180" href="{{ '/' | url }}assets/favicon/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="{{ '/' | url }}assets/favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="{{ '/' | url }}assets/favicon/favicon-16x16.png">
-	<link rel="manifest" href="{{ '/' | url }}assets/favicon/site.webmanifest">
-	<link rel="shortcut icon" href="{{ '/' | url }}assets/favicon/favicon.ico">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-config" content="{{ '/' | url }}assets/favicon/browserconfig.xml">#}
-	<meta name="theme-color" content="#191D29"> 
-
-	<link rel="stylesheet" href="/bundle/main.css"/>
-</head>
+</footer>

@@ -1,6 +1,6 @@
 const sanityClient = require("@sanity/client");
 
-const { sanity } = require("../client-config");
+const { sanity } = require("../sanity-config");
 
 module.exports = sanityClient({
   ...sanity,
