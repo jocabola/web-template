@@ -1,10 +1,11 @@
 const esbuild = require('esbuild');
+const alias = require('esbuild-plugin-alias');
 const chokidar = require('chokidar');
 const isProduction = process.env.ELEVENTY_ENV === 'production';
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 const buildJS = () => {
-	esbuild.buildSync({
+	esbuild.build({
 		entryPoints: ['src/js/main.js'],
 		bundle: true,
 		minify: isProduction,
@@ -12,6 +13,11 @@ const buildJS = () => {
 		define: { DEV_MODE: true },
 		loader: { '.glsl': 'text', '.vert': 'text', '.frag': 'text' },
 		outfile: 'bundle/main.js',
+		plugins: [
+			alias({
+				'three': __dirname + '/node_modules/three/build/three.min.js',
+			})
+		]
 	});
 }
 
