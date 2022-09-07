@@ -11,18 +11,18 @@
 		"build": "ELEVENTY_ENV=production eleventy"
 	},
 	"dependencies": {
-		"@jocabola/gfx": "^0.4.79",
+		"@jocabola/gfx": "^0.4.91",
 		"@jocabola/io": "^0.3.56",
 		"@jocabola/math": "^0.2.42",
 		"@jocabola/phy": "^0.1.74",
 		"@jocabola/utils": "^0.1.89",
-		"three": "^0.143.0"
+		"three": "^0.144.0"
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^1.0.2",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^4.1.0",
 		"chokidar": "^3.5.3",
-		"esbuild": "^0.15.5",
+		"esbuild": "^0.15.7",
 		"esbuild-plugin-alias": "^0.2.1"
 	}
 }
