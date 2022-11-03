@@ -1,4 +1,4 @@
-import { WebGLSketch } from '@jocabola/gfx';
+import { WebGLSketch } from '@fils/gfx';
 
 export class App extends WebGLSketch {
 	constructor() {
