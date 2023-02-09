@@ -10,7 +10,7 @@ const buildJS = () => {
 		bundle: true,
 		minify: isProduction,
 		sourcemap: false,
-		define: { DEV_MODE: true },
+		define: { DEV_MODE: "true" },
 		loader: { '.glsl': 'text', '.vert': 'text', '.frag': 'text' },
 		outfile: 'bundle/main.js',
 		plugins: [
