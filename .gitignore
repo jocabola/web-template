@@ -139,3 +139,5 @@ $RECYCLE.BIN/
 # custom files
 bundle
 public
+yarn.lock
+.env
