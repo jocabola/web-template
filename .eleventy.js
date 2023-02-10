@@ -10,12 +10,12 @@ const autoprefixer = require('autoprefixer');
 const postcss = require('postcss');
 const CleanCSS = require('clean-css');
 
-const OUT_CSS = 'bundle/main.css'
-
 // Sanity shortcodes
 const urlFor = require('./utils/imageUrl');
 const urlForAsset = require('./utils/urlForAsset');
 const blockText = require('./utils/blockText');
+
+const OUT_BUNDLE = 'bundle';
 
 const buildJS = () => {
 	esbuild.build({
@@ -25,7 +25,7 @@ const buildJS = () => {
 		sourcemap: false,
 		define: { DEV_MODE: "true" },
 		loader: { '.glsl': 'text', '.vert': 'text', '.frag': 'text' },
-		outfile: 'bundle/main.js',
+		outfile: `${OUT_BUNDLE}/main.js`,
 		plugins: [
 			alias({
 				'three': __dirname + '/node_modules/three/build/three.min.js',
@@ -35,28 +35,22 @@ const buildJS = () => {
 }
 
 const buildCSS = () => {
-	sass.render(
-		{ file: 'src/styles/main.scss' },
-		function (err, result) {
-			const css = result.css.toString();
-			postcss([autoprefixer])
-				.process(css, {
-					from: 'src/styles/main.scss',
-					to: OUT_CSS,
-				})
-				.then((result) => {
-
-					const finalCSS = !isProduction ? result.css : new CleanCSS({}).minify(result.css).styles;
-
-					fs.writeFile(OUT_CSS, finalCSS, (error) => {
-						if (error) console.log(error);
-					});
-				});
-		}
-	);
+	const result = sass.compile('./src/styles/main.scss');
+	const css = result.css.toString();
+	postcss([autoprefixer])
+		.process(css, {
+			from: 'src/styles/main.scss',
+			to: `${OUT_BUNDLE}/main.css`,
+		})
+		.then((result) => {
+			const finalCSS = !isProduction ? result.css : new CleanCSS({}).minify(result.css).styles;
+			fs.writeFile(`${OUT_BUNDLE}/main.css`, finalCSS, (err) => {
+				if (err) console.log(err);
+			});
+		})
 }
 
-if(!isProduction) {
+if (!isProduction) {
 	chokidar.watch('src/').on('change', (eventType, file) => {
 		console.log(`Updated JS [${eventType}]`);
 		buildJS();
@@ -74,20 +68,25 @@ module.exports = function (eleventyConfig) {
 	// browser sync options
 	eleventyConfig.setBrowserSyncConfig({
 		ghostMode: false,
+		middleware: [
+			(req, res, next) => {
+				if (req.url.endsWith('.json.gz')) {
+				res.setHeader('Content-Type', 'application/json');
+				res.setHeader('Content-Encoding', 'gzip');
+				}
+				next();
+			},
+		],
 	});
 	eleventyConfig.setWatchJavaScriptDependencies(false);
-	eleventyConfig.addPassthroughCopy({"src/assets": "assets"});
-	eleventyConfig.addPassthroughCopy("bundle");
+	eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+	eleventyConfig.addPassthroughCopy(OUT_BUNDLE);
 
-	/* eleventyConfig.addFilter("cssmin", function(code) {
-		return new CleanCSS({}).minify(code).styles;
-	}); */
-
-	eleventyConfig.addShortcode('imageUrlFor', (image, width = '400') => {
-		if(!image) return;
-		return urlFor(image).width(width).auto('format').url();
+	eleventyConfig.addShortcode('imageUrlFor', (image, max = '400', format = 'webp') => {
+		if (!image) return;
+		// const max = isProduction ? maxSize : maxSize;
+		return urlFor(image).height(max).fit('max').format(format).quality(95).url();
 	});
-
 	// eleventyConfig.addShortcode('assetUrlFor', (asset) => {
 	// 		if(!!!asset) return 'no-asset';
 	// 		return urlForAsset(asset);
