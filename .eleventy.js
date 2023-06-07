@@ -1,34 +1,16 @@
-const esbuild = require('esbuild');
-const alias = require('esbuild-plugin-alias');
 const chokidar = require('chokidar');
 const isProduction = process.env.ELEVENTY_ENV === 'production';
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-
-const buildJS = () => {
-	esbuild.build({
-		entryPoints: ['src/js/main.js'],
-		bundle: true,
-		minify: isProduction,
-		sourcemap: false,
-		define: { DEV_MODE: "true" },
-		loader: { '.glsl': 'text', '.vert': 'text', '.frag': 'text' },
-		outfile: 'bundle/main.js',
-		plugins: [
-			alias({
-				'three': __dirname + '/node_modules/three/build/three.min.js',
-			})
-		]
-	});
-}
+const { buildJS } = require('./scripts/esbuild');
 
 if(!isProduction) {
 	chokidar.watch('src/').on('change', (eventType, file) => {
 		console.log(`Updated JS [${eventType}]`);
-		buildJS();
+		buildJS(isProduction);
 	});
-}
 
-buildJS();
+	buildJS(isProduction);
+}
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.addPlugin(syntaxHighlight);
