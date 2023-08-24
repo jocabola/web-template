@@ -11,19 +11,20 @@
 		"build": "node scripts/build.js && ELEVENTY_ENV=production eleventy"
 	},
 	"dependencies": {
-		"@fils/gen": "^0.0.13",
-		"@fils/gfx": "^0.0.10",
-		"@fils/io": "^0.0.7",
+		"@11ty/eleventy-server-browsersync": "^1.0.2",
+		"@fils/gen": "^0.1.0",
+		"@fils/gfx": "^0.1.0",
+		"@fils/io": "^0.0.8",
 		"@fils/math": "^0.0.9",
 		"@fils/phy": "^0.0.4",
-		"@fils/utils": "^0.0.16",
-		"three": "^0.153.0"
+		"@fils/utils": "^0.0.20",
+		"three": "^0.155.0"
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^2.0.1",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
 		"chokidar": "^3.5.3",
-		"esbuild": "^0.17.19",
+		"esbuild": "^0.19.2",
 		"esbuild-plugin-alias": "^0.2.1"
 	}
 }

@@ -17,8 +17,9 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.setUseGitIgnore(false);
 	// browser sync options
-	eleventyConfig.setBrowserSyncConfig({
-		ghostMode: false,
+	eleventyConfig.setServerOptions({
+		module: "@11ty/eleventy-server-browsersync",
+		ghostMode: false
 	});
 	eleventyConfig.setWatchJavaScriptDependencies(false);
 	eleventyConfig.addPassthroughCopy({"src/assets": "assets"});
