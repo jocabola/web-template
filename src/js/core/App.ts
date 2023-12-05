@@ -1,25 +1,33 @@
-import { WebGLSketch } from '@fils/gfx';
+import { ThreeDOMLayer } from "@fils/gl-dom";
+import { ThreeSketch } from "../gfx/ThreeSketch";
+import { Timer } from "@fils/ani";
 
-export class App extends WebGLSketch {
+export class App {
+	gl:ThreeDOMLayer;
+	sketch:ThreeSketch;
+	clock:Timer;
 	constructor() {
-		super(window.innerWidth, window.innerHeight, {
-			alpha: false,
-			antialias: true
-		});
-		this.renderer.setClearColor(0xffffff, 1);
-		document.body.appendChild(this.domElement);
-		this.domElement.className = 'view';
-		
-		window.addEventListener('resize', (event)=>{
-			this.resize(window.innerWidth, window.innerHeight);
-		});
-
-		this.camera.position.z = 5;
-
+		this.gl = new ThreeDOMLayer(document.querySelector('.view'));
+		// this.gl.renderer.setClearColor(0xffffff, 1);
+		this.sketch = new ThreeSketch(this.gl);
 		this.start();
 	}
 
+	start() {
+		const animate = () => {
+			requestAnimationFrame(animate);
+			this.update();
+		}
+
+		requestAnimationFrame(animate);
+
+		this.clock = new Timer(true);
+	}
+
 	update() {
-		super.update();
+		this.clock.tick();
+		const t = this.clock.currentTime;
+		this.sketch.update(t);
+		this.sketch.render();
 	}
 }

@@ -6,6 +6,14 @@ Uses [11ty](https://www.11ty.dev/) static generator and [ThreeJS](https://threej
 
 Happy Coding!
 
+## Dev Notes
+Current Sketch version has migrated to `@fils/gl-dom` structure.
+
+### To-Do:
+* Upgrade `WebGLSketch` & `Sketch` into such structure
+* Re-think the current WebGL sketch VR mode and upgrade to new layering system
+* Add Sketch wrappers for 2D Canvas & Potentially other WebGL engines like regl
+
 ## License
 
 Copyright 2021, Eduard Prats Molner

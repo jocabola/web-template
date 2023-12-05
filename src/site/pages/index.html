@@ -7,15 +7,24 @@
 	<title>Template</title>
 
 	<style>
-		canvas.view {
+		.view {
 			position: absolute;
 			left: 0;
 			top: 0;
+			width: 100vw;
+			height: 100vh;
+			width: 100dvw;
+			height: 100dvh;
 		}
 	</style>
 </head>
 <body>
+
+	<div class="view"></div>
 	
-	<script src="bundle/main.js"></script>
+	<script defer type="module">
+		const src = "/bundle/main.js";
+		import(src).then(module => {});
+	</script>
 </body>
 </html>
