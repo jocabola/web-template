@@ -7,8 +7,9 @@
 	"license": "Apache-2.0",
 	"private": true,
 	"scripts": {
+		"glsl": "node scripts/build/glsl",
 		"dev": "eleventy --serve --watch",
-		"build": "node scripts/build.js && ELEVENTY_ENV=production eleventy"
+		"build": "node scripts/build/build.js && ELEVENTY_ENV=production eleventy"
 	},
 	"dependencies": {
 		"@11ty/eleventy-server-browsersync": "^1.0.2",

@@ -1,7 +1,7 @@
 const chokidar = require('chokidar');
 const isProduction = process.env.ELEVENTY_ENV === 'production';
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const { buildJS } = require('./scripts/esbuild');
+const { buildJS } = require('./scripts/build/esbuild');
 
 if(!isProduction) {
 	chokidar.watch('src/').on('change', (eventType, file) => {
