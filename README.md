@@ -16,7 +16,7 @@ Current Sketch version has migrated to `@fils/gl-dom` structure.
 
 ## License
 
-Copyright 2021, Eduard Prats Molner
+Copyright 2024, Eduard Prats Molner
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
