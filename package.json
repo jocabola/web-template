@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"description": "Web Sketch Template",
 	"main": "index.js",
-	"author": "Edu Prats <hello@eduprats.com>",
+	"author": "Fil Studio <hello@fil.studio>",
 	"license": "Apache-2.0",
 	"private": true,
 	"scripts": {
@@ -29,7 +29,7 @@
 		"autoprefixer": "^10.4.20",
 		"chokidar": "^4.0.1",
 		"clean-css": "^5.3.3",
-		"esbuild": "^0.24.0",
+		"esbuild": "^0.23.1",
 		"esbuild-plugin-alias": "^0.2.1",
 		"postcss": "^8.4.47",
 		"sass": "^1.79.4"

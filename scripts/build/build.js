@@ -3,6 +3,7 @@ const { buildJS, buildCSS } = require("./esbuild");
 async function buildJSSync () {
     await buildJS(true);
 	console.log("JS built!");
+    buildCSSSync();
 }
 
 async function buildCSSSync() {
@@ -11,4 +12,4 @@ async function buildCSSSync() {
 }
 
 buildJSSync();
-buildCSSSync();
+// buildCSSSync();

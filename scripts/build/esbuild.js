@@ -1,5 +1,5 @@
 const esbuild = require('esbuild');
-// const alias = require('esbuild-plugin-alias');
+const alias = require('esbuild-plugin-alias');
 
 const sass = require('sass');
 const autoprefixer = require('autoprefixer');
@@ -15,7 +15,9 @@ function buildJS (isProduction=false) {
 			bundle: true,
 			minify: isProduction,
 			sourcemap: false,
-			define: { DEV_MODE: !isProduction ? "true" : "false" },
+			define: { 
+				DEV_MODE: !isProduction ? "true" : "false",
+			},
 			loader: { '.glsl': 'text', '.vert': 'text', '.frag': 'text' },
 			outfile: 'bundle/main.js',
 			/* plugins: [
