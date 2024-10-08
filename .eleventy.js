@@ -9,9 +9,26 @@ if(!isProduction) {
 		buildCSS(isProduction);
 	}
 
-	chokidar.watch('src/').on('change', (eventType, file) => {
-		console.log(`Updated JS [${eventType}]`);
-		build();
+	const ev = {
+		file: null,
+		when: 0
+	}
+
+	chokidar.watch('src/').on('change', (file, eventType) => {
+		if(file === ev.file && Date.now() - ev.when < 300) {
+			console.log('ignoring dupliocated file change event...');
+			return;
+		}
+		ev.file = file;
+		ev.when = Date.now();
+
+		if(file.indexOf('.ts') > -1) {
+			console.log(`Updated JS [${file}]`);
+			buildJS(isProduction);
+		} else if(file.indexOf('.scss') > -1) {
+			console.log(`Updated CSS [${file}]`);
+			buildCSS(isProduction);
+		}
 	});
 
 	build();
