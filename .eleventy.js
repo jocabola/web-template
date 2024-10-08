@@ -1,15 +1,20 @@
 const chokidar = require('chokidar');
 const isProduction = process.env.ELEVENTY_ENV === 'production';
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const { buildJS } = require('./scripts/build/esbuild');
+const { buildJS, buildCSS } = require('./scripts/build/esbuild');
 
 if(!isProduction) {
+	const build = () => {
+		buildJS(isProduction);
+		buildCSS(isProduction);
+	}
+
 	chokidar.watch('src/').on('change', (eventType, file) => {
 		console.log(`Updated JS [${eventType}]`);
-		buildJS(isProduction);
+		build();
 	});
 
-	buildJS(isProduction);
+	build();
 }
 
 module.exports = function (eleventyConfig) {
@@ -31,7 +36,7 @@ module.exports = function (eleventyConfig) {
 
 	return {
 		dir: {
-			data: '../data',
+			data: '../../../data',
 			input: 'src/site/pages',
 			includes: '../partials',
 			layouts: '../base',

@@ -8,7 +8,7 @@ export class App {
 	clock:Timer;
 	constructor() {
 		this.gl = new ThreeDOMLayer(document.querySelector('.view'));
-		// this.gl.renderer.setClearColor(0xffffff, 1);
+		this.gl.renderer.setClearColor(0xffffff, 1);
 		this.sketch = new ThreeSketch(this.gl);
 		this.start();
 	}

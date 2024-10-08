@@ -14,20 +14,24 @@
 	"dependencies": {
 		"@11ty/eleventy-server-browsersync": "^1.0.2",
 		"@fils/ani": "^0.0.6",
-		"@fils/gen": "^0.1.0",
-		"@fils/gfx": "^0.1.0",
-		"@fils/gl-dom": "^0.0.5",
-		"@fils/io": "^0.0.8",
+		"@fils/gen": "^0.2.0",
+		"@fils/gfx": "^0.1.6",
+		"@fils/gl-dom": "^0.0.9",
+		"@fils/io": "^0.0.9",
 		"@fils/math": "^0.1.0",
 		"@fils/phy": "^0.0.4",
-		"@fils/utils": "^0.0.20",
-		"three": "^0.159.0"
+		"@fils/utils": "^0.1.1",
+		"three": "^0.169.0"
 	},
 	"devDependencies": {
-		"@11ty/eleventy": "^2.0.1",
+		"@11ty/eleventy": "^3.0.0",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
-		"chokidar": "^3.5.3",
-		"esbuild": "^0.19.8",
-		"esbuild-plugin-alias": "^0.2.1"
+		"autoprefixer": "^10.4.20",
+		"chokidar": "^4.0.1",
+		"clean-css": "^5.3.3",
+		"esbuild": "^0.24.0",
+		"esbuild-plugin-alias": "^0.2.1",
+		"postcss": "^8.4.47",
+		"sass": "^1.79.4"
 	}
 }
