@@ -136,3 +136,4 @@ $RECYCLE.BIN/
 # custom files
 bundle
 public
+.env

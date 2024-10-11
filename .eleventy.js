@@ -14,7 +14,7 @@ if(!isProduction) {
 		when: 0
 	}
 
-	chokidar.watch('src/').on('change', (file, eventType) => {
+	const watcher = chokidar.watch('src/').on('change', (file, eventType) => {
 		if(file === ev.file && Date.now() - ev.when < 300) {
 			console.log('ignoring dupliocated file change event...');
 			return;
@@ -32,6 +32,19 @@ if(!isProduction) {
 	});
 
 	build();
+
+	const onExit = () => {
+		console.log('11ty exit');
+		watcher.close().then(() => console.log('Chokidar watcher closed'));
+	}
+
+	process.on('beforeExit', onExit);
+	
+	['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT',
+	'SIGBUS', 'SIGFPE', 'SIGUSR1', 'SIGSEGV', 'SIGUSR2', 'SIGTERM', 'SIGBREAK'
+	].forEach(function(element, index, array) {
+		process.on(element, onExit);
+	});
 }
 
 module.exports = function (eleventyConfig) {
