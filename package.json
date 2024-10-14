@@ -14,12 +14,9 @@
 	"dependencies": {
 		"@11ty/eleventy-server-browsersync": "^1.0.2",
 		"@fils/ani": "^0.0.6",
-		"@fils/gen": "^0.2.0",
 		"@fils/gfx": "^0.1.6",
 		"@fils/gl-dom": "^0.0.9",
-		"@fils/io": "^0.0.9",
 		"@fils/math": "^0.1.0",
-		"@fils/phy": "^0.0.4",
 		"@fils/utils": "^0.1.1",
 		"three": "^0.169.0"
 	},
