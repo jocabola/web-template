@@ -22,12 +22,12 @@ if(!isProduction) {
 		ev.file = file;
 		ev.when = Date.now();
 
-		if(file.indexOf('.ts') > -1) {
-			console.log(`Updated JS [${file}]`);
-			buildJS(isProduction);
-		} else if(file.indexOf('.scss') > -1) {
+		if(file.indexOf('.scss') > -1) {
 			console.log(`Updated CSS [${file}]`);
 			buildCSS(isProduction);
+		} else {
+			console.log(`Updated Source [${file}]`);
+			buildJS(isProduction);
 		}
 	});
 
