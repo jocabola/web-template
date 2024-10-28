@@ -1,7 +1,7 @@
 // Partials
-@import './partials/reset';
-@import './partials/variables';
-@import './partials/fonts';
+@use './partials/reset';
+@use './partials/variables';
+@use './partials/fonts';
 
 .view {
     position: absolute;

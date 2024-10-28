@@ -26,9 +26,9 @@
 		"autoprefixer": "^10.4.20",
 		"chokidar": "^4.0.1",
 		"clean-css": "^5.3.3",
-		"esbuild": "^0.23.1",
+		"esbuild": "^0.24.0",
 		"esbuild-plugin-alias": "^0.2.1",
 		"postcss": "^8.4.47",
-		"sass": "^1.79.4"
+		"sass": "^1.80.4"
 	}
 }
