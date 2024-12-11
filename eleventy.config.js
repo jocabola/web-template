@@ -66,13 +66,13 @@ module.exports = function (eleventyConfig) {
 
 	return {
 		dir: {
-			data: '../../../data',
 			input: 'src/site/pages',
+			data: '../../../data',
 			includes: '../partials',
 			layouts: '../base',
 			output: 'public'
 		},
-		templateFormats: ['html', 'njk', 'md'],
+		templateFormats: ['html', 'njk', 'md', '11ty.js'],
 		htmlTemplateEngine: 'njk',
 	}
 }

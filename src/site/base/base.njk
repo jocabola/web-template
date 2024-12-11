@@ -5,6 +5,8 @@
 	<body>
         <div class="view"></div>
 
+        {{ content | safe }}
+
         <script defer type="module">
             const src = "/bundle/main.js";
             import(src).then(module => {});

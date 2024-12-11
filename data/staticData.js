@@ -1,10 +1,7 @@
-const staticData = {
-
+export default {
 	// Get global "isProduction"
 	isProduction: process.env.ELEVENTY_ENV === 'production',
-	baseURL: "/",
+	baseURL: "",
     title: "Hello World",
 	description: "Lorem ipsum."
 }
-
-module.exports = staticData;
