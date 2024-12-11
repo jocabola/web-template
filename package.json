@@ -6,13 +6,13 @@
 	"author": "Fil Studio <hello@fil.studio>",
 	"license": "Apache-2.0",
 	"private": true,
+	"type": "module",
 	"scripts": {
 		"glsl": "node scripts/build/glsl",
 		"dev": "eleventy --serve --watch",
 		"build": "node scripts/build/build.js && ELEVENTY_ENV=production eleventy"
 	},
 	"dependencies": {
-		"@11ty/eleventy-server-browsersync": "^1.0.2",
 		"@fils/ani": "^0.0.6",
 		"@fils/gfx": "^0.1.6",
 		"@fils/gl-dom": "^0.0.9",

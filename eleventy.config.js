@@ -1,7 +1,10 @@
-const chokidar = require('chokidar');
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import chokidar from 'chokidar';
+import { buildCSS, buildJS } from './scripts/build/esbuild.mjs';
 const isProduction = process.env.ELEVENTY_ENV === 'production';
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const { buildJS, buildCSS } = require('./scripts/build/esbuild');
+
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
 
 if(!isProduction) {
 	const build = () => {
@@ -47,14 +50,36 @@ if(!isProduction) {
 	});
 }
 
-module.exports = function (eleventyConfig) {
+export default function (eleventyConfig) {
 	eleventyConfig.addPlugin(syntaxHighlight);
 
 	eleventyConfig.setUseGitIgnore(false);
 	// browser sync options
 	eleventyConfig.setServerOptions({
-		module: "@11ty/eleventy-server-browsersync",
-		ghostMode: false
+		ghostMode: false,
+		onRequest: {
+			"/foo/:name": function({ url, pattern, patternGroups }) {
+				// patternGroups will include URLPattern matches e.g. /foo/zach => { name: "zach" }
+				return {
+					status: 200,
+					headers: {
+						"Content-Type": "text/html",
+					},
+					body: "Hello."
+				};
+			},
+			"*.fil": function({url}) {
+				const path = resolve(`./public${url.pathname}`);
+				// console.log(path)
+				return {
+					headers: {
+						"Content-Type": "application/json",
+						"Content-Encoding": "gzip"
+					},
+					body: readFileSync(path)
+				}
+			}
+		}
 	});
 	eleventyConfig.setWatchJavaScriptDependencies(false);
 	eleventyConfig.addPassthroughCopy({"src/assets": "assets"});

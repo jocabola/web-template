@@ -1,14 +1,14 @@
-const esbuild = require('esbuild');
-const alias = require('esbuild-plugin-alias');
+import esbuild from 'esbuild';
+// import alias from 'esbuild-plugin-alias';
 
-const sass = require('sass');
-const autoprefixer = require('autoprefixer');
-const postcss = require('postcss');
-const CleanCSS = require('clean-css');
+import * as sass from 'sass';
+import autoprefixer from 'autoprefixer';
+import postcss from 'postcss';
+import CleanCSS from 'clean-css';
 
-const fs = require('fs');
+import fs from 'fs';
 
-function buildJS (isProduction=false) {
+export function buildJS (isProduction=false) {
     return new Promise((resolve, reject) => {
 		esbuild.build({
 			entryPoints: ['src/js/main.js'],
@@ -34,7 +34,7 @@ function buildJS (isProduction=false) {
 	})
 }
 
-const buildCSS = (isProduction=false) => {
+export const buildCSS = (isProduction=false) => {
 	return new Promise((resolve, reject) => {
 		const result = sass.compile('./src/styles/main.scss');
 		const css = result.css.toString();
@@ -59,9 +59,4 @@ const buildCSS = (isProduction=false) => {
 				reject(err);
 			});
 	})
-}
-
-module.exports = {
-    buildJS,
-	buildCSS
 }
